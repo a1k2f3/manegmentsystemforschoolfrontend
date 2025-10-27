@@ -1,13 +1,21 @@
 "use client";
-import { useState } from "react";
+import { useState, FormEvent, ChangeEvent } from "react";
 
 export default function Home() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
 
-  const handleLogin = (e) => {
+  const handleLogin = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log({ email, password });
+  };
+
+  const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value);
+  };
+
+  const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setPassword(e.target.value);
   };
 
   return (
@@ -37,7 +45,7 @@ export default function Home() {
               type="text"
               placeholder="Email / ID"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={handleEmailChange}
               className="w-full py-3 px-8 rounded-full border border-gray-400 focus:border-transparent focus:ring-2 focus:ring-blue-400 outline-none text-gray-700 bg-white/60 placeholder-gray-500"
             />
           </div>
@@ -47,7 +55,7 @@ export default function Home() {
               type="password"
               placeholder="Password"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={handlePasswordChange}
               className="w-full py-3 px-8 rounded-full border border-gray-400 focus:border-transparent focus:ring-2 focus:ring-blue-400 outline-none text-gray-700 bg-white/60 placeholder-gray-500"
             />
           </div>
@@ -69,18 +77,6 @@ export default function Home() {
             LOGIN
           </button>
         </form>
-
-        {/* Footer */}
-        {/* <div className="mt-8 text-gray-700 text-sm flex justify-center gap-8">
-          <button className="flex flex-col items-center hover:text-blue-500 transition">
-            <span className="text-lg">🎓</span>
-            <span>Student</span>
-          </button>
-          <button className="flex flex-col items-center hover:text-green-500 transition">
-            <span className="text-lg">👩‍🏫</span>
-            <span>Faculty</span>
-          </button>
-        </div> */}
       </div>
     </div>
   );
