@@ -10,11 +10,11 @@ import {
 } from "@heroicons/react/24/outline";
 
 const menuItems = [
-  { title: "Dashboard", icon: HomeIcon, path: "/teacher/dashboard" },
-  { title: "Profile", icon: UserIcon, path: "/teacher/profile" },
-  { title: "Grades", icon: ClipboardIcon, path: "/teacher/grades" },
-  { title: "Courses", icon: BookOpenIcon, path: "/teacher/courses" },
-  { title: "Settings", icon: Cog6ToothIcon, path: "/teacher/settings" },
+  { title: "Dashboard", icon: HomeIcon, path: "/auth/teacherDashboard" },
+  { title: "Profile", icon: UserIcon, path: "/auth/teacherDashboard/profile" },
+  { title: "MarkGrades", icon: ClipboardIcon, path: "/auth/teacherDashboard/grades" },
+  { title: "Courses", icon: BookOpenIcon, path: "/auth/teacherDashboardcourses" },
+  { title: "Settings", icon: Cog6ToothIcon, path: "/auth/teacherDashboard/settings" },
 ];
 
 export default function Sidebar() {

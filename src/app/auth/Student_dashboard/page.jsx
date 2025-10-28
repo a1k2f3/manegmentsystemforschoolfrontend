@@ -1,11 +1,11 @@
-import Sidebar from "./../../Components/Studentdas/Sidebar";
-import DashboardCard from "./../../Components/Studentdas/DashboardCard";
-import ProgressBar from "./../../Components/Studentdas/ProgressBar";
+import Sidebar from "@/Components/Studentdas/Sidebar";
+import DashboardCard from "@/Components/Studentdas/DashboardCard";
+import ProgressBar from "@/Components/Studentdas/DashboardCard";
 
 export default function Student_dashboard() {
   return (
     
-    <div className="flex min-h-screen p-6 gap-6">
+    <div className="flex min-h-screen ">
       <Sidebar />
 
        <div className="absolute top-10 left-10 w-64 h-64 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>

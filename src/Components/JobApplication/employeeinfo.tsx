@@ -1,28 +1,31 @@
-"use client"
+"use client";
 import React, { useState } from "react";
-import { PersonalInfo } from "@/Components/AdmisionForm/personalinfo";
-import { ParentInfo } from "@/Components/AdmisionForm/Parentinfo";
-import { AcademicInfo } from "@/Components/AdmisionForm/Acadamicinfo";
-import { DocumentUpload } from "@/Components/AdmisionForm/DocumentUpload";
+import { PersonalDetails } from "./Personaldetail";
+import { EducationInfo } from "./Educationinfo";
+import { ExperienceInfo } from "./Experienceinfo";
+import { DocumentUpload } from "./Documentts";
 
-export default function AdmissionForm (){
+
+export const JobApplicationForm = () => {
   const [formData, setFormData] = useState({
     name: "",
-    dob: "",
-    gender: "",
+    email: "",
+    phone: "",
     address: "",
-    contact: "",
-    father: "",
-    mother: "",
-    occupation: "",
-    parentContact: "",
-    previousSchool: "",
-    lastGrade: "",
+    position: "",
+    gender: "",
+    qualification: "",
+    university: "",
+    yearOfPassing: "",
+    cgpa: "",
+    lastJob: "",
+    yearsOfExperience: "",
+    skills: "",
   });
 
   const [files, setFiles] = useState({});
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
@@ -34,9 +37,9 @@ export default function AdmissionForm (){
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form Data:", formData);
+    console.log("Application Data:", formData);
     console.log("Uploaded Files:", files);
-    alert("Admission form submitted successfully!");
+    alert("Job Application Submitted Successfully!");
   };
 
   return (
@@ -45,12 +48,12 @@ export default function AdmissionForm (){
       className="max-w-4xl mx-auto bg-gray-50 p-8 rounded-3xl shadow-xl border border-gray-200"
     >
       <h1 className="text-3xl font-bold text-center text-blue-700 mb-8">
-        🏫 School Admission Form
+        🧾 Job Application Form
       </h1>
 
-      <PersonalInfo formData={formData} handleChange={handleChange} />
-      <ParentInfo formData={formData} handleChange={handleChange} />
-      <AcademicInfo formData={formData} handleChange={handleChange} />
+      <PersonalDetails formData={formData} handleChange={handleChange} />
+      <EducationInfo formData={formData} handleChange={handleChange} />
+      <ExperienceInfo formData={formData} handleChange={handleChange} />
       <DocumentUpload handleFileChange={handleFileChange} />
 
       <div className="text-center mt-6">

@@ -1,5 +1,5 @@
-import Sidebar from "./../../Components/Teacherdas/Sidebar";
-import DashboardCard from "./../../Components/Teacherdas/DashboardCard";
+import Sidebar from "@/Components/Teacherdas/Sidebar";
+import DashboardCard from "@/Components/Teacherdas/DashboardCard";
 
 
 export default function DashboardPage() {
