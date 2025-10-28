@@ -6,7 +6,9 @@ import {
   UserIcon,
   BookOpenIcon,
   ClipboardIcon,
-  Cog6ToothIcon,BuildingLibraryIcon 
+  Cog6ToothIcon,BuildingLibraryIcon,
+  AcademicCapIcon,
+   PresentationChartBarIcon
 } from "@heroicons/react/24/outline";
 
 const menuItems = [
@@ -14,9 +16,9 @@ const menuItems = [
   { title: "Profile", icon: UserIcon, path: "/auth/student_dashboard/profile" },
   { title: "Grades", icon: ClipboardIcon, path: "/auth/student_dashboard/grades" },
   { title: "Courses", icon: BookOpenIcon, path: "/auth/student_dashboard/courses" },
-  { title: "Tutorials", icon: BookOpenIcon, path: "/auth/student_dashboard/tutorials" },
+  { title: "Tutorials", icon: AcademicCapIcon, path: "/auth/student_dashboard/tutorials" },
   { title: "Library", icon:BuildingLibraryIcon, path: "/auth/student_dashboard/library" },
-  { title: "Classes", icon: Cog6ToothIcon, path: "/auth/student_dashboard/classes" },
+  { title: "Classes", icon:  PresentationChartBarIcon, path: "/auth/student_dashboard/classes" },
   { title: "Settings", icon: Cog6ToothIcon, path: "/auth/student_dashboard/settings" },
 ];
 

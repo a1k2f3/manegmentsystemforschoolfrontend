@@ -6,14 +6,19 @@ import {
   UserIcon,
   BookOpenIcon,
   ClipboardIcon,
-  Cog6ToothIcon,
+  Cog6ToothIcon,BuildingLibraryIcon,
+  AcademicCapIcon,
+   PresentationChartBarIcon
 } from "@heroicons/react/24/outline";
 
 const menuItems = [
   { title: "Dashboard", icon: HomeIcon, path: "/auth/teacherDashboard" },
   { title: "Profile", icon: UserIcon, path: "/auth/teacherDashboard/profile" },
   { title: "MarkGrades", icon: ClipboardIcon, path: "/auth/teacherDashboard/grades" },
-  { title: "Courses", icon: BookOpenIcon, path: "/auth/teacherDashboardcourses" },
+  { title: "Courses", icon: BookOpenIcon, path: "/auth/teacherDashboard/courses" },
+  { title: "Tutorials", icon: AcademicCapIcon, path: "/auth/teacherDashboard/tutorials" },
+  { title: "Library", icon:BuildingLibraryIcon, path: "/auth/teacherDashboard/library" },
+  { title: "Classes", icon:  PresentationChartBarIcon, path: "/auth/teacherDashboard/classes" },
   { title: "Settings", icon: Cog6ToothIcon, path: "/auth/teacherDashboard/settings" },
 ];
 
