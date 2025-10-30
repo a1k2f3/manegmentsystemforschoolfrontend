@@ -5,7 +5,7 @@ import ProgressBar from "@/Components/Studentdas/DashboardCard";
 export default function Student_dashboard() {
   return (
     
-    <div className="flex min-h-screen ">
+    <div className="flex min-h-screen p-6 gap-6">
       <Sidebar />
 
        <div className="absolute top-10 left-10 w-64 h-64 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>

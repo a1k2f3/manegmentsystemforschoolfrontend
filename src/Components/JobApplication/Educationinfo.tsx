@@ -15,7 +15,7 @@ export const EducationInfo: React.FC<Props> = ({ formData, handleChange }) => {
         <input name="qualification" value={formData.qualification} onChange={handleChange} placeholder="Highest Qualification" className="input  w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition" />
         <input name="university" value={formData.university} onChange={handleChange} placeholder="University / Board" className="input  w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition" />
         <input name="yearOfPassing" value={formData.yearOfPassing} onChange={handleChange} placeholder="Year of Passing" className="input  w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition" />
-        <input name="cgpa" value={formData.cgpa} onChange={handleChange} placeholder="CGPA / Percentage" className="input" />
+        <input name="cgpa" value={formData.cgpa} onChange={handleChange} placeholder="CGPA / Percentage" className="input  w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition" />
       </div>
     </div>
   );

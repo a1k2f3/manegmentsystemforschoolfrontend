@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import Sidebar from "@/Components/Teacherdas/Sidebar";
 import { motion } from "framer-motion";
 import { PencilSquareIcon, CheckCircleIcon } from "@heroicons/react/24/outline";
-
 interface Student {
   id: number;
   name: string;
@@ -14,14 +13,12 @@ interface Student {
   homework: number;
   test: number;
 }
-
 export default function TeacherGrades() {
   const [students, setStudents] = useState<Student[]>([
     { id: 1, name: "Aisha Rahman", rollNo: "ERA1112256", quiz: 0, assignment: 0, homework: 0, test: 0 },
     { id: 2, name: "Ahmed Khan", rollNo: "ERA1112257", quiz: 0, assignment: 0, homework: 0, test: 0 },
     { id: 3, name: "Sara Malik", rollNo: "ERA1112258", quiz: 0, assignment: 0, homework: 0, test: 0 },
   ]);
-
   const [editingId, setEditingId] = useState<number | null>(null);
   const [formData, setFormData] = useState({
     quiz: 0,
@@ -40,7 +37,6 @@ export default function TeacherGrades() {
       test: student.test,
     });
   };
-
   // Save updated marks
   const handleSave = (id: number) => {
     setStudents((prev) =>
