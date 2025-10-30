@@ -1,6 +1,6 @@
 import Sidebar from "@/Components/Studentdas/Sidebar";
 import DashboardCard from "@/Components/Studentdas/DashboardCard";
-import ProgressBar from "@/Components/Studentdas/DashboardCard";
+import ProgressBar from "@/Components/Studentdas/ProgressBar";
 
 export default function Student_dashboard() {
   return (

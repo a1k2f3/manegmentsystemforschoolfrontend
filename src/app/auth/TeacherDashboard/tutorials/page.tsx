@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import Sidebar from "@/Components/Teacherdas/Sidebar";
+import TeacherSidebar from "@/Components/Teacherdas/TeacherSidebar";
 import { motion } from "framer-motion";
 import { PencilSquareIcon, TrashIcon, PlusIcon } from "@heroicons/react/24/outline";
 
@@ -89,7 +89,7 @@ export default function TeacherTutorials() {
 
   return (
     <div className="flex min-h-screen p-6 gap-6 relative">
-      <Sidebar />
+      <TeacherSidebar />
 
       {/* Background */}
       <div className="absolute top-10 left-10 w-64 h-64 bg-purple-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>

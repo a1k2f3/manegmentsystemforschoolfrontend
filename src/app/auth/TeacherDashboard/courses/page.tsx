@@ -1,7 +1,7 @@
 "use client";
 
 import React, { JSX, useState } from "react";
-import Sidebar from "@/Components/Studentdas/Sidebar";
+import TeacherSidebar from "@/Components/Teacherdas/TeacherSidebar";
 import DashboardCard from "@/Components/Studentdas/DashboardCard";
 import ProgressBar from "@/Components/Studentdas/ProgressBar";
 
@@ -68,7 +68,7 @@ export default function Courses(): JSX.Element {
   return (
     <div className="flex min-h-screen p-6 gap-6 relative">
       {/* Sidebar */}
-      <Sidebar />
+      <TeacherSidebar />
 
       {/* Soft Animated Background */}
       <div className="absolute top-10 left-10 w-64 h-64 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>

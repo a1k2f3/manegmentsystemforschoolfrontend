@@ -19,10 +19,11 @@ const menuItems = [
   { title: "Tutorials", icon: AcademicCapIcon, path: "/auth/teacherDashboard/tutorials" },
   { title: "Library", icon:BuildingLibraryIcon, path: "/auth/teacherDashboard/library" },
   { title: "Classes", icon:  PresentationChartBarIcon, path: "/auth/teacherDashboard/classes" },
+  { title: "Attendance", icon:  Cog6ToothIcon, path: "/auth/teacherDashboard/markAttendance" },
   { title: "Settings", icon: Cog6ToothIcon, path: "/auth/teacherDashboard/settings" },
 ];
 
-export default function Sidebar() {
+export default function TeacherSidebar() {
   const router = useRouter();
   const pathname = usePathname(); // ✅ detects current route
 

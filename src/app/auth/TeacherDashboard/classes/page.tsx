@@ -1,7 +1,7 @@
 "use client";
 
 import React, { JSX, useState } from "react";
-import Sidebar from "@/Components/Teacherdas/Sidebar";
+import TeacherSidebar from "@/Components/Teacherdas/TeacherSidebar";
 import DashboardCard from "@/Components/Studentdas/DashboardCard";
 import { CalendarDaysIcon, MapPinIcon, ClockIcon, UsersIcon } from "@heroicons/react/24/outline";
 
@@ -35,7 +35,7 @@ export default function TeacherClasses(): JSX.Element {
   return (
     <div className="flex min-h-screen p-6 gap-6 relative">
       {/* Sidebar */}
-      <Sidebar />
+      <TeacherSidebar />
 
       {/* Animated Background */}
       <div className="absolute top-10 left-10 w-64 h-64 bg-orange-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>

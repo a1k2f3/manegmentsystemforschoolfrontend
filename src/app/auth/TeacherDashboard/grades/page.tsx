@@ -1,9 +1,10 @@
 "use client";
 
 import React, { useState } from "react";
-import Sidebar from "@/Components/Teacherdas/Sidebar";
+import Sidebar from "@/Components/Teacherdas/TeacherSidebar";
 import { motion } from "framer-motion";
 import { PencilSquareIcon, CheckCircleIcon } from "@heroicons/react/24/outline";
+import TeacherSidebar from "@/Components/Teacherdas/TeacherSidebar";
 interface Student {
   id: number;
   name: string;
@@ -53,7 +54,7 @@ export default function TeacherGrades() {
 
   return (
     <div className="flex min-h-screen p-6 gap-6 relative">
-      <Sidebar />
+      <TeacherSidebar />
 
       {/* Soft Background */}
       <div className="absolute top-10 left-10 w-64 h-64 bg-indigo-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>

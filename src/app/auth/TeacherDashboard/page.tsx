@@ -1,12 +1,11 @@
-import Sidebar from "@/Components/Teacherdas/Sidebar";
+import TeacherSidebar from "@/Components/Teacherdas/TeacherSidebar";
 import DashboardCard from "@/Components/Teacherdas/DashboardCard";
-
 
 export default function DashboardPage() {
   return (
     <div className="flex gap-6 p-6 min-h-screen">
-      <Sidebar />
-
+     
+<TeacherSidebar/>
       <div className="flex-1 bg-white/80 backdrop-blur-xl rounded-3xl shadow-md p-8 border border-gray-100">
         <h1 className="text-2xl font-bold mb-6">Teacher Dashboard</h1>
 
