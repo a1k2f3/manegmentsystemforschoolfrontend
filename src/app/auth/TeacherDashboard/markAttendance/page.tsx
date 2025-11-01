@@ -10,7 +10,7 @@ export default function Attendance() {
     { id: "S005", name: "Sofia Rodriguez", status: "Present", time: "8:57 AM" },
   ]);
 
-  const updateStatus = (id, newStatus) => {
+  const updateStatus = (id: string, newStatus: string) => {
     setStudents((prev) =>
       prev.map((s) =>
         s.id === id ? { ...s, status: newStatus } : s
@@ -119,7 +119,7 @@ export default function Attendance() {
 }
 
 // Glow Card Component
-function GlowCard({ title, value, color }) {
+function GlowCard({ title, value, color }: { title: string; value: string | number; color?: string }) {
   return (
     <div
       className={`relative p-6 rounded-2xl bg-gradient-to-br ${color} text-white shadow-2xl transform hover:scale-105 transition-all duration-300 overflow-hidden`}
