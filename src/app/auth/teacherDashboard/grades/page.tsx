@@ -1,7 +1,5 @@
 "use client";
-
 import React, { useState } from "react";
-import Sidebar from "@/Components/Teacherdas/TeacherSidebar";
 import { motion } from "framer-motion";
 import { PencilSquareIcon, CheckCircleIcon } from "@heroicons/react/24/outline";
 import TeacherSidebar from "@/Components/Teacherdas/TeacherSidebar";

@@ -1,8 +1,8 @@
 "use client";
 
 import React, { JSX, useState } from "react";
-import TeacherSidebar from "@/Components/Studentdas/Sidebar";
-import DashboardCard from "@/Components/Teacherdas/DashboardCard";
+import TeacherSidebar from "@/Components/Teacherdas/TeacherSidebar";
+import DashboardCard from "@/Components/Studentdas/DashboardCard";
 import { CalendarDaysIcon, MapPinIcon, ClockIcon, UsersIcon } from "@heroicons/react/24/outline";
 
 interface TeacherClass {
@@ -12,9 +12,11 @@ interface TeacherClass {
   room: string;
   students: number;
 }
+
 export default function TeacherClasses(): JSX.Element {
   const [search, setSearch] = useState<string>("");
   const [filter, setFilter] = useState<string>("All Days");
+
   const classList: TeacherClass[] = [
     { title: "Database Systems", day: "Monday", time: "9:00 AM - 10:30 AM", room: "Lab 2", students: 40 },
     { title: "Software Engineering", day: "Tuesday", time: "11:00 AM - 12:30 PM", room: "Room 204", students: 35 },
