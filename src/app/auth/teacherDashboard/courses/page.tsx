@@ -11,7 +11,6 @@ interface Course {
   progress: number;
   status: "Ongoing" | "Completed" | "Upcoming";
 }
-
 export default function Courses(): JSX.Element {
   const [search, setSearch] = useState<string>("");
   const [filter, setFilter] = useState<string>("All Courses");

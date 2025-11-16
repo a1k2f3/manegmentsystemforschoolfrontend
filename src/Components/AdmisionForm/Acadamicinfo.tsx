@@ -12,6 +12,7 @@ export const AcademicInfo: React.FC<Props> = ({ formData, handleChange }) => {
       <div className="grid grid-cols-2 gap-4">
         <input name="previousSchool" value={formData.previousSchool} onChange={handleChange} placeholder="Previous School" className="input w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition" />
         <input name="lastGrade" value={formData.lastGrade} onChange={handleChange} placeholder="Last Grade" className="input w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition" />
+        <input name="Addmission grade" value={formData.currentGrade} onChange={handleChange} placeholder="AddmissionGrade" className="input w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition" />
       </div>
     </div>
   );

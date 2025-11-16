@@ -22,19 +22,15 @@ export const JobApplicationForm = () => {
     yearsOfExperience: "",
     skills: "",
   });
-
   const [files, setFiles] = useState({});
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files?.length) {
       setFiles({ ...files, [e.target.name]: e.target.files[0] });
     }
   };
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Application Data:", formData);

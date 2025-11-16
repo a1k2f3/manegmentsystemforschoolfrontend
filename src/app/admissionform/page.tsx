@@ -18,6 +18,7 @@ export default function AdmissionForm (){
     parentContact: "",
     previousSchool: "",
     lastGrade: "",
+    currentGrade: "",
   });
 
   const [files, setFiles] = useState({});
@@ -47,7 +48,7 @@ export default function AdmissionForm (){
       <h1 className="text-3xl font-bold text-center text-blue-700 mb-8">
         🏫 School Admission Form
       </h1>
-
+a
       <PersonalInfo formData={formData} handleChange={handleChange} />
       <ParentInfo formData={formData} handleChange={handleChange} />
       <AcademicInfo formData={formData} handleChange={handleChange} />
