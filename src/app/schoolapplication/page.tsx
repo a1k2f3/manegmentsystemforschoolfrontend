@@ -3,74 +3,131 @@
 import React, { useState } from "react";
 import FormContainer from "./components/FormContainer";
 import StepNav from "./components/StepNav";
-import PersonalInfo from "./components/steps/PersonalInfo"; // School info
-import ParentInfo from "./components/steps/ParentInfo"; // Contact & leadership
-import AcademicInfo from "./components/steps/AcademicInfo"; // Accreditation
+import PersonalInfo from "./components/steps/PersonalInfo";
+import ParentInfo from "./components/steps/ParentInfo";
+import AcademicInfo from "./components/steps/AcademicInfo";
 import DocumentsUpload from "./components/steps/DocumentsUpload";
 import ReviewSubmit from "./components/steps/ReviewSubmit";
+import { SchoolApplicationFormData } from "@/types/schoolApplication";
 
 export default function SchoolApplicationPage() {
-	const [step, setStep] = useState<number>(1);
-		const totalSteps = 5;
+  const [step, setStep] = useState<number>(1);
+  const totalSteps = 5;
 
-	const [formData, setFormData] = useState<any>({});
+ const [formData, setFormData] = useState<SchoolApplicationFormData>({
+  schoolName: "",
+  registrationNumber: "",
+  establishmentYear: "",
+  address: "",
+  city: "",
+  state: "",
+  pincode: "",
+  schoolType: "",
+  medium: "",
 
-	const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-		const { name, value } = e.target;
-		setFormData((s: any) => ({ ...s, [name]: value }));
-	};
+  principalName: "",
+  principalPhone: "",
+  principalEmail: "",
+  contactPhone: "",
+  contactEmail: "",
 
-	const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		const { name } = e.target;
-		const file = e.target.files && e.target.files[0];
-		setFormData((s: any) => ({ ...s, [name]: file }));
-	};
+  affiliationBoard: "",
+  gradesOffered: "",
+  totalStudents: "",
+  totalTeachers: "",
 
-	const next = () => setStep((s) => Math.min(totalSteps, s + 1));
-	const prev = () => setStep((s) => Math.max(1, s - 1));
+  // Add these!
+  registrationCertificate: null,
+  affiliationCertificate: null,
+  noc: null,
+  schoolLogo: null,
+});
 
-		const validateStep = (current: number) => {
-			// minimal validation per step (school registration fields)
-			if (current === 1) {
-				return !!formData.schoolName && !!formData.registrationNumber;
-			}
-			if (current === 2) {
-				return !!formData.principalName && !!formData.contactPhone;
-			}
-			if (current === 3) {
-				return !!formData.affiliationBoard;
-			}
-			return true;
-		};
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
 
-	const handleSubmit = async () => {
-		// simple submit demo: log the formData. Replace with API call.
-		console.log("Submitting application:", formData);
-		alert("Application submitted (demo). Check console for data.");
-	};
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, files } = e.target;
+    if (!files || !name) return;
 
-	return (
-		<FormContainer title="School Registration" subtitle="Register a school in the system — provide accurate details and upload required documents">
-			<div>
-				{step === 1 && <PersonalInfo formData={formData} handleChange={handleChange} />}
-				{step === 2 && <ParentInfo formData={formData} handleChange={handleChange} />}
-				{step === 3 && <AcademicInfo formData={formData} handleChange={handleChange} />}
-				{step === 4 && <DocumentsUpload formData={formData} handleFileChange={handleFileChange} />}
-				{step === 5 && <ReviewSubmit formData={formData} />}
+    setFormData((prev) => ({
+      ...prev,
+      [name]: files[0] || null,
+    }));
+  };
 
-				<StepNav
-					step={step}
-					total={totalSteps}
-					onPrev={prev}
-					onNext={() => {
-						if (step === totalSteps) {
-							handleSubmit();
-						} else if (validateStep(step)) next();
-						else alert("Please complete required fields for this step.");
-					}}
-					isNextDisabled={!validateStep(step)}
-				/>
-			</div>
-		</FormContainer>
-	);
+  const next = () => setStep((s) => Math.min(totalSteps, s + 1));
+  const prev = () => setStep((s) => Math.max(1, s - 1));
+
+  const validateStep = (current: number): boolean => {
+    switch (current) {
+      case 1:
+        return !!formData.schoolName && !!formData.registrationNumber;
+      case 2:
+        return !!formData.principalName && !!formData.contactPhone;
+      case 3:
+        return !!formData.affiliationBoard;
+      case 4:
+        return !!formData.registrationCertificate;
+      default:
+        return true;
+    }
+  };
+
+  const handleSubmit = async () => {
+    console.log("Final Submission:", formData);
+
+    // Optional: Convert files to FormData for API
+    const submitData = new FormData();
+    Object.entries(formData).forEach(([key, value]) => {
+      if (value instanceof File) {
+        submitData.append(key, value);
+      } else if (value !== undefined && value !== null) {
+        submitData.append(key, String(value));
+      }
+    });
+
+    // Replace with real API call
+    // await fetch("/api/school/register", { method: "POST", body: submitData });
+
+    alert("School registration submitted successfully!");
+  };
+
+  const handleNext = () => {
+    if (step === totalSteps) {
+      handleSubmit();
+    } else if (validateStep(step)) {
+      next();
+    } else {
+      alert("Please fill in all required fields before proceeding.");
+    }
+  };
+
+  return (
+    <FormContainer
+      title="School Registration"
+      subtitle="Register your school with accurate details and required documents"
+    >
+      <div>
+        {step === 1 && <PersonalInfo formData={formData} handleChange={handleChange} />}
+        {step === 2 && <ParentInfo formData={formData} handleChange={handleChange} />}
+        {step === 3 && <AcademicInfo formData={formData} handleChange={handleChange} />}
+        {step === 4 && <DocumentsUpload handleFileChange={handleFileChange} />}
+        {step === 5 && <ReviewSubmit formData={formData} />}
+
+        <StepNav
+  step={step}
+  total={totalSteps}
+  onPrev={prev}
+  onNext={handleNext}
+  isNextDisabled={step < totalSteps && !validateStep(step)}
+  isSubmit={step === totalSteps}
+/>
+      </div>
+    </FormContainer>
+  );
 }

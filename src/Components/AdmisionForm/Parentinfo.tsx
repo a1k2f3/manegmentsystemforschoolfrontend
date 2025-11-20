@@ -1,14 +1,23 @@
 import React from "react";
 
+interface ParentInfoData {
+  father: string;
+  mother: string;
+  occupation: string;
+  parentContact: string;
+}
+
 interface Props {
-  formData: any;
+  formData: ParentInfoData;
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const ParentInfo: React.FC<Props> = ({ formData, handleChange }) => {
   return (
     <div className="bg-white shadow-md rounded-2xl p-8 mb-8 hover:shadow-lg transition-all duration-200">
-      <h2 className="text-2xl font-bold mb-6 text-blue-700 border-b-2 border-blue-100 pb-3">Parent / Guardian Info</h2>
+      <h2 className="text-2xl font-bold mb-6 text-blue-700 border-b-2 border-blue-100 pb-3">
+        Parent / Guardian Info
+      </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <input
           name="father"

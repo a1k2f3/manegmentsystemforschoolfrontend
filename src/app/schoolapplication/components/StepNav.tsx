@@ -1,46 +1,74 @@
+// src/components/StepNav.tsx
 "use client";
 
 import React from "react";
 
-interface Props {
+interface StepNavProps {
   step: number;
   total: number;
   onPrev: () => void;
   onNext: () => void;
   isNextDisabled?: boolean;
+  isSubmit?: boolean;
 }
 
-export default function StepNav({ step, total, onPrev, onNext, isNextDisabled }: Props) {
+export default function StepNav({
+  step,
+  total,
+  onPrev,
+  onNext,
+  isNextDisabled = false,
+  isSubmit = false,
+}: StepNavProps) {
   return (
-    <div className="flex items-center justify-between mt-4">
-      <div className="flex items-center gap-2">
-        {Array.from({ length: total }).map((_, i) => {
-          const idx = i + 1;
-          return (
-            <div
-              key={i}
-              className={`w-8 h-2 rounded-full ${idx <= step ? "bg-orange-500" : "bg-gray-200"}`}
-            />
-          );
-        })}
+    <div className="mt-10 flex justify-between items-center">
+      {/* Previous Button */}
+      <button
+        type="button"
+        onClick={onPrev}
+        disabled={step === 1}
+        className={`px-6 py-3 rounded-lg font-medium transition-all ${
+          step === 1
+            ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+            : "bg-gray-600 text-white hover:bg-gray-700"
+        }`}
+      >
+        Previous
+      </button>
+
+      {/* Step Indicator */}
+      <div className="flex items-center space-x-2">
+        {Array.from({ length: total }, (_, i) => (
+          <div
+            key={i + 1}
+            className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-medium transition-all ${
+              step === i + 1
+                ? "bg-blue-600 text-white"
+                : step > i + 1
+                ? "bg-green-500 text-white"
+                : "bg-gray-300 text-gray-600"
+            }`}
+          >
+            {i + 1}
+          </div>
+        ))}
       </div>
 
-      <div className="flex items-center gap-3">
-        <button
-          onClick={onPrev}
-          disabled={step === 1}
-          className="px-4 py-2 rounded-xl border border-gray-200 bg-white text-gray-700 disabled:opacity-50"
-        >
-          Previous
-        </button>
-        <button
-          onClick={onNext}
-          disabled={!!isNextDisabled}
-          className="px-4 py-2 rounded-xl bg-orange-500 text-white hover:bg-orange-600 disabled:opacity-50"
-        >
-          {step === total ? "Submit" : "Next"}
-        </button>
-      </div>
+      {/* Next / Submit Button */}
+      <button
+        type="button"
+        onClick={onNext}
+        disabled={isNextDisabled}
+        className={`px-8 py-3 rounded-lg font-semibold transition-all ${
+          isNextDisabled
+            ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+            : isSubmit
+            ? "bg-green-600 text-white hover:bg-green-700"
+            : "bg-blue-600 text-white hover:bg-blue-700"
+        }`}
+      >
+        {isSubmit ? "Submit Application" : "Next"}
+      </button>
     </div>
   );
 }

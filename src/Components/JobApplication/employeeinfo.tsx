@@ -4,16 +4,15 @@ import { PersonalDetails } from "./Personaldetail";
 import { EducationInfo } from "./Educationinfo";
 import { ExperienceInfo } from "./Experienceinfo";
 import { DocumentUpload } from "./Documentts";
-
-
+import { JobApplicationFormData, UploadedFiles } from "@/types/jobApplication"; // adjust path
 export const JobApplicationForm = () => {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<JobApplicationFormData>({
     name: "",
     email: "",
     phone: "",
     address: "",
-    position: "",
-    gender: "",
+    position: "",           // now matches the union type
+    gender: "",             // now matches the union type
     qualification: "",
     university: "",
     yearOfPassing: "",
@@ -22,15 +21,22 @@ export const JobApplicationForm = () => {
     yearsOfExperience: "",
     skills: "",
   });
-  const [files, setFiles] = useState({});
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+
+  const [files, setFiles] = useState<UploadedFiles>({});
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
+
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files?.length) {
-      setFiles({ ...files, [e.target.name]: e.target.files[0] });
+      setFiles((prev) => ({ ...prev, [e.target.name]: e.target.files![0] }));
     }
   };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Application Data:", formData);
@@ -44,7 +50,7 @@ export const JobApplicationForm = () => {
       className="max-w-4xl mx-auto bg-gray-50 p-8 rounded-3xl shadow-xl border border-gray-200"
     >
       <h1 className="text-3xl font-bold text-center text-blue-700 mb-8">
-        🧾 Job Application Form
+        Job Application Form
       </h1>
 
       <PersonalDetails formData={formData} handleChange={handleChange} />

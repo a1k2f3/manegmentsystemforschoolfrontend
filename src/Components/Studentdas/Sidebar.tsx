@@ -6,19 +6,28 @@ import {
   UserIcon,
   BookOpenIcon,
   ClipboardIcon,
-  Cog6ToothIcon,BuildingLibraryIcon,
+  Cog6ToothIcon,
+  BuildingLibraryIcon,
   AcademicCapIcon,
-   PresentationChartBarIcon
+  PresentationChartBarIcon,
 } from "@heroicons/react/24/outline";
+import { ComponentType, SVGProps } from "react";
 
-const menuItems = [
+// Type for each menu item
+interface MenuItem {
+  title: string;
+  icon: ComponentType<SVGProps<SVGSVGElement>>;
+  path: string;
+}
+
+const menuItems: MenuItem[] = [
   { title: "Dashboard", icon: HomeIcon, path: "/auth/student_dashboard" },
   { title: "Profile", icon: UserIcon, path: "/auth/student_dashboard/profile" },
   { title: "Grades", icon: ClipboardIcon, path: "/auth/student_dashboard/grades" },
   { title: "Courses", icon: BookOpenIcon, path: "/auth/student_dashboard/courses" },
   { title: "Tutorials", icon: AcademicCapIcon, path: "/auth/student_dashboard/tutorials" },
-  { title: "Library", icon:BuildingLibraryIcon, path: "/auth/student_dashboard/library" },
-  { title: "Classes", icon:  PresentationChartBarIcon, path: "/auth/student_dashboard/classes" },
+  { title: "Library", icon: BuildingLibraryIcon, path: "/auth/student_dashboard/library" },
+  { title: "Classes", icon: PresentationChartBarIcon, path: "/auth/student_dashboard/classes" },
   { title: "Settings", icon: Cog6ToothIcon, path: "/auth/student_dashboard/settings" },
 ];
 
@@ -36,6 +45,7 @@ export default function Sidebar() {
       {/* Menu Items */}
       {menuItems.map(({ title, icon: Icon, path }) => {
         const isActive = pathname === path;
+
         return (
           <button
             key={title}

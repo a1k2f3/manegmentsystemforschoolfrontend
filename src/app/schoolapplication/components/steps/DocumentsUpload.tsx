@@ -1,25 +1,67 @@
+// components/steps/DocumentsUpload.tsx
 "use client";
 
-import React from "react";
-
 interface Props {
-  formData: any;
   handleFileChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export default function DocumentsUpload({ formData, handleFileChange }: Props) {
+export default function DocumentsUpload({ handleFileChange }: Props) {
   return (
-    <div className="bg-white shadow-sm rounded-2xl p-6">
-      <h3 className="text-lg font-semibold text-gray-800 mb-4">School Documents</h3>
-      <div className="grid grid-cols-1 gap-4">
-        <label className="text-sm text-gray-600">Registration / License Certificate</label>
-        <input type="file" name="registrationCertificate" onChange={handleFileChange} className="w-full" />
+    <div className="bg-white rounded-2xl shadow-md p-6">
+      <h3 className="text-xl font-semibold text-blue-600 mb-5">Upload Documents</h3>
+      <div className="space-y-5">
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            Registration Certificate <span className="text-red-500">*</span>
+          </label>
+          <input
+            type="file"
+            name="registrationCertificate"
+            accept=".pdf,.jpg,.jpeg,.png"
+            onChange={handleFileChange}
+            required
+            className="w-full file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
+          />
+        </div>
 
-        <label className="text-sm text-gray-600">No Objection Certificate (if any)</label>
-        <input type="file" name="noc" onChange={handleFileChange} className="w-full" />
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            Affiliation Certificate
+          </label>
+          <input
+            type="file"
+            name="affiliationCertificate"
+            accept=".pdf,.jpg,.jpeg,.png"
+            onChange={handleFileChange}
+            className="w-full file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
+          />
+        </div>
 
-        <label className="text-sm text-gray-600">School Logo (optional)</label>
-        <input type="file" name="logo" onChange={handleFileChange} className="w-full" />
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            NOC (if applicable)
+          </label>
+          <input
+            type="file"
+            name="noc"
+            accept=".pdf,.jpg,.jpeg,.png"
+            onChange={handleFileChange}
+            className="w-full file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
+          />
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            School Logo (optional)
+          </label>
+          <input
+            type="file"
+            name="schoolLogo"
+            accept="image/*"
+            onChange={handleFileChange}
+            className="w-full file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
+          />
+        </div>
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-"use client";
+
 
 import { useRouter, usePathname } from "next/navigation";
 import {
@@ -10,10 +10,18 @@ import {
   BuildingLibraryIcon,
   AcademicCapIcon,
   PresentationChartBarIcon,
-  UserGroupIcon
+  UserGroupIcon,
 } from "@heroicons/react/24/outline";
+import { ComponentType, SVGProps } from "react";
 
-const menuItems = [
+// Type for menu items
+interface MenuItem {
+  title: string;
+  icon: ComponentType<SVGProps<SVGSVGElement>>;
+  path: string;
+}
+
+const menuItems: MenuItem[] = [
   { title: "Dashboard", icon: HomeIcon, path: "/auth/teacherDashboard" },
   { title: "Profile", icon: UserIcon, path: "/auth/teacherDashboard/profile" },
   { title: "Classes", icon: PresentationChartBarIcon, path: "/auth/teacherDashboard/classes" },
@@ -39,6 +47,7 @@ export default function TeacherSidebar() {
       {/* Menu Items */}
       {menuItems.map(({ title, icon: Icon, path }) => {
         const isActive = pathname === path;
+
         return (
           <button
             key={title}
